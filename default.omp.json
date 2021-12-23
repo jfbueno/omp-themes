@@ -10,6 +10,20 @@
             "vertical_offset": 0,
             "segments": [
                 {
+                    "type": "os",
+                    "style": "diamond",
+                    "leading_diamond": "",
+                    "trailing_diamond": "",
+                    "foreground": "#f2f7f7",
+                    "background": "#546E7A",
+                    "properties": {
+                        "postfix": " ",
+                        "macos": "mac",
+                        "wsl": "🐧",
+                        "wsl_separator": " "
+                    }
+                },
+                {
                     "type": "path",
                     "style": "powerline",
                     "powerline_symbol": "",
