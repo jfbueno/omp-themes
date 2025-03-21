@@ -1,95 +1,111 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "blocks": [
-      {
-        "alignment": "left",
-        "type": "prompt",
-        "segments": [
-          {
-            "background": "red",
-            "foreground": "black",
-            "powerline_symbol": "\ue0c4",
-            "style": "powerline",
-            "template": "\uf0e7",
-            "type": "root"
-          },          
-          {
-            "background": "black",
-            "foreground": "yellow",
-            "powerline_symbol": "\ue0b0",
-            "properties": {
-              "folder_separator_icon": "/",
-              "style": "folder"
-            },
-            "style": "diamond",
-            "template": "\ue5ff  {{ .Path }} ",
-            "type": "path"
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "{{if .Root}}(Admin) {{end}}{{.Folder}}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
           },
-          {
-            "background": "black",
-            "foreground": "lightGreen",
-            "powerline_symbol": "\ue0b0",
-            "properties": {
-              "branch_max_length": 25,
-              "fetch_stash_count": true,
-              "fetch_status": true,
-              "fetch_upstream_icon": true,
-              "source": "pwsh"
-            },
-            "style": "powerline",
-            "template": "{{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
-            "type": "git"
+          "template": " \uf0e7",
+          "foreground": "black",
+          "powerline_symbol": "\ue0c4",
+          "background": "red",
+          "type": "root",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "folder_separator_icon": "/",
+            "style": "folder"
           },
-          {
-            "background": "magenta",
-            "foreground": "white",
-            "powerline_symbol": "\ue0c4",
-            "style": "powerline",
-            "template": " \ue70c {{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
-            "type": "dotnet"
+          "template": " \ue5ff  {{ .Path }} ",
+          "foreground": "yellow",
+          "powerline_symbol": "\ue0b0",
+          "background": "black",
+          "type": "path",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "branch_max_length": 25,
+            "cache_duration": "none",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "source": "pwsh"
           },
-          {
-            "background": "blue",
-            "foreground": "white",
-            "powerline_symbol": "\ue0c4",
-            "properties": {
-              "style": "austin",
-              "threshold": 1
-            },
-            "style": "powerline",
-            "template": " <#fefefe>\uf254</> {{ .FormattedMs }} ",
-            "type": "executiontime"
+          "template": "{{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
+          "foreground": "lightGreen",
+          "powerline_symbol": "\ue0b0",
+          "background": "black",
+          "type": "git",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
           },
-          {
-            "type": "status",
-            "style": "diamond",
-            "foreground": "white",
-            "background": "yellow",
-            "background_templates": [
-              "{{ if .Error }}#e91e63{{ end }}"
-            ],
-            "trailing_diamond": "\ue0b4",
-            "template": " \ue654 ",
-            "properties": {
-              "always_enabled": false
-            }
-          }
-        ]
-      },
-      {
-        "alignment": "left",
-        "newline": true,
-        "segments": [
-          {
-            "foreground": "green",
-            "style": "plain",
-            "template": "\uf4b5  ",
-            "type": "text"
-          }
-        ],
-        "type": "prompt"
-      }
-    ],
-    "console_title_template": "{{if .Root}}(Admin) {{end}}{{.Folder}}",
-    "version": 2
-  }
+          "template": " \ue70c {{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
+          "foreground": "white",
+          "powerline_symbol": "\ue0c4",
+          "background": "magenta",
+          "type": "dotnet",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "austin",
+            "threshold": 1
+          },
+          "template": " <#fefefe>\uf254</> {{ .FormattedMs }} ",
+          "foreground": "white",
+          "powerline_symbol": "\ue0c4",
+          "background": "blue",
+          "type": "executiontime",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "always_enabled": false,
+            "cache_duration": "none"
+          },
+          "trailing_diamond": "\ue0b4",
+          "template": " \ue654 ",
+          "foreground": "white",
+          "background": "yellow",
+          "type": "status",
+          "style": "diamond",
+          "background_templates": [
+            "{{ if .Error }}#e91e63{{ end }}"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "white",
+          "template": "{{ if .Env.CONDA_DEFAULT_ENV }}\ue235  ({{ .Env.CONDA_DEFAULT_ENV }}){{ end }} "
+        },
+        {
+          "template": "\uf4b5  ",
+          "foreground": "green",
+          "type": "text",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3
+}
