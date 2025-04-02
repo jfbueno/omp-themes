@@ -112,6 +112,12 @@
         "newline": true,
         "segments": [
           {
+            "type": "text",
+            "style": "plain",
+            "foreground": "white",
+            "template": "{{ if .Env.CONDA_DEFAULT_ENV }}\ue235  ({{ .Env.CONDA_DEFAULT_ENV }}){{ end }} "
+          },
+          {
             "foreground": "green",
             "style": "plain",
             "template": "\uf4b5  ",
