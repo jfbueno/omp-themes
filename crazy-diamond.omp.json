@@ -10,25 +10,27 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
-          "foreground": "foreground",
-          "background": "transparent",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
           "type": "os",
-          "style": "plain"
+          "style": "diamond",
+          "background": "lightBlue",
+          "foreground": "black",
+          "leading_diamond": "\u256d\u2500\ue0b6"
         },
         {
+          "type": "root",
+          "style": "diamond",
           "properties": {
             "cache_duration": "none"
           },
           "trailing_diamond": "\ue0b0",
           "template": " \uf0e7 ",
           "foreground": "foreground",
-          "powerline_symbol": "\ue0c4",
-          "background": "red",
-          "type": "root",
-          "style": "diamond"
+          "background": "red"
         },
         {
+          "type": "path",
+          "style": "diamond",
           "properties": {
             "cache_duration": "none",
             "folder_icon": "...",
@@ -36,41 +38,47 @@
             "home_icon": "\ueb06",
             "style": "folder"
           },
-          "leading_diamond": "<transparent,darkGray>\ue0b0</>",
+          "leading_diamond": " ",
           "trailing_diamond": "\ue0b0",
-          "template": " \ue5ff  {{ .Path }} ",
+          "template": " \ue5ff {{ .Path }} ",
           "foreground": "foreground",
-          "background": "darkGray",
-          "type": "path",
-          "style": "diamond"
+          "background": "blue"
         },
         {
+          "type": "git",
+          "style": "diamond",
+          "template": " {{ .UpstreamIcon }} {{ .HEAD }} ({{ printf \"%.7s\" .Commit.Sha}}){{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf51e {{ .StashCount }}{{ end }} ",
+          "foreground": "black",
+          "background": "yellow",
           "properties": {
             "branch_max_length": 25,
             "cache_duration": "none",
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true,
-            "source": "pwsh"
-          },
-          "template": " {{ .UpstreamIcon }} {{ .HEAD }} ({{ printf \"%.7s\" .Commit.Sha}}){{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
-          "foreground": "black",
-          "powerline_symbol": "\ue0b0",
-          "background": "yellow",
-          "type": "git",
-          "style": "powerline"
+            "source": "pwsh",
+            "branch_icon": "\ue725"
+          }
         },
         {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "leading_diamond": "<transparent,blue>\ue0b0</>",
-          "trailing_diamond": "\ue0b0",
-          "template": " \ue70c {{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
+          "type": "java",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
           "foreground": "white",
-          "background": "blue",
-          "type": "dotnet",
-          "style": "diamond"
+          "background": "red",
+          "template": " \ue256 {{ .Full }} ",
+          "properties": {
+            "fetch_version": true
+          }
+        },
+        {
+          "type": "aws",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "leading_diamond": "",
+          "foreground": "lightRed",
+          "background": "darkGray",
+          "template": " \uf0ef  {{.Profile}}{{if .Region}}@{{.Region}}{{end}} "
         },
         {
           "properties": {
@@ -84,7 +92,7 @@
           "type": "status",
           "style": "diamond",
           "background_templates": [
-            "{{ if .Error }}lightRed{{ end }}"
+            "{{ if .Error }}red{{ end }}"
           ]
         }
       ]
@@ -108,15 +116,29 @@
           "style": "diamond"
         },
         {
+          "foreground": "magenta",
+          "background": "transparent",
+          "style": "diamond",
+          "template": " <lightWhite>\uebe2 </> {{ round .PhysicalPercentUsed .Precision }}%",
+          "type": "sysinfo"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": false,
+      "segments": [
+        {
           "properties": {
-            "cache_duration": "none",
-            "time_format": "15:04:05"
+            "cache_duration": "none"
           },
-          "leading_diamond": "\ue0ba",
-          "template": " {{ .CurrentDate | date .Format }} ",
-          "foreground": "lightYellow",
-          "background": "magenta",
-          "type": "time",
+          "leading_diamond": "<transparent,blue>\ue0b0</>",
+          "trailing_diamond": "\ue0b0",
+          "template": " \ue70c {{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
+          "foreground": "white",
+          "background": "blue",
+          "type": "dotnet",
           "style": "diamond"
         }
       ]
@@ -135,11 +157,20 @@
           "style": "plain"
         },
         {
+          "type": "kubectl",
+          "style": "diamond",
+          "leading_diamond": "<lightBlue>\u2570\u2500{ </>",
+          "trailing_diamond": "<lightBlue> }</>",
+          "foreground": "white",
+          "background": "transparent",
+          "template": "<lightBlue>\udb82\udc33</> {{if .Namespace}}{{.Namespace}} <lightBlue>at</> {{end}}{{.Context}}"
+        },
+        {
           "properties": {
             "cache_duration": "none"
           },
-          "template": "\uf4b5  ",
-          "foreground": "green",
+          "template": " \uf4b5  ",
+          "foreground": "lightGreen",
           "type": "text",
           "style": "plain"
         }
