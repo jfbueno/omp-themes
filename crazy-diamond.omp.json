@@ -7,9 +7,6 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
           "type": "os",
           "style": "diamond",
@@ -20,7 +17,7 @@
         {
           "type": "root",
           "style": "diamond",
-          "properties": {
+          "options": {
             "cache_duration": "none"
           },
           "trailing_diamond": "\ue0b0",
@@ -31,8 +28,7 @@
         {
           "type": "path",
           "style": "diamond",
-          "properties": {
-            "cache_duration": "none",
+          "options": {
             "folder_icon": "...",
             "folder_separator_icon": "<transparent> \ue0bd </>",
             "home_icon": "\ueb06",
@@ -41,7 +37,7 @@
           "leading_diamond": " ",
           "trailing_diamond": "\ue0b0",
           "template": " \ue5ff {{ .Path }} ",
-          "foreground": "foreground",
+          "foreground": "white",
           "background": "blue"
         },
         {
@@ -50,13 +46,9 @@
           "template": " {{ .UpstreamIcon }} {{ .HEAD }} ({{ printf \"%.7s\" .Commit.Sha}}){{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf51e {{ .StashCount }}{{ end }} ",
           "foreground": "black",
           "background": "yellow",
-          "properties": {
-            "branch_max_length": 25,
-            "cache_duration": "none",
-            "fetch_stash_count": true,
+          "options": {
             "fetch_status": true,
             "fetch_upstream_icon": true,
-            "source": "pwsh",
             "branch_icon": "\ue725"
           }
         },
@@ -67,7 +59,7 @@
           "foreground": "white",
           "background": "red",
           "template": " \ue256 {{ .Full }} ",
-          "properties": {
+          "options": {
             "fetch_version": true
           }
         },
@@ -81,9 +73,8 @@
           "template": " \uf0ef  {{.Profile}}{{if .Region}}@{{.Region}}{{end}} "
         },
         {
-          "properties": {
-            "always_enabled": false,
-            "cache_duration": "none"
+          "options": {
+            "always_enabled": false
           },
           "trailing_diamond": "\ue0b0",
           "template": " \ue654 ",
@@ -102,8 +93,7 @@
       "alignment": "right",
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none",
+          "options": {
             "style": "austin",
             "threshold": 500
           },
@@ -130,9 +120,6 @@
       "newline": false,
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "leading_diamond": "<transparent,blue>\ue0b0</>",
           "trailing_diamond": "\ue0b0",
           "template": " \ue70c {{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
@@ -148,9 +135,6 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": "{{ if .Env.CONDA_DEFAULT_ENV }}\ue235  ({{ .Env.CONDA_DEFAULT_ENV }}){{ end }} ",
           "foreground": "white",
           "type": "text",
@@ -166,9 +150,6 @@
           "template": "<lightBlue>\udb82\udc33</> {{if .Namespace}}{{.Namespace}} <lightBlue>at</> {{end}}{{.Context}}"
         },
         {
-          "properties": {
-            "cache_duration": "none"
-          },
           "template": " \uf4b5  ",
           "foreground": "lightGreen",
           "type": "text",
