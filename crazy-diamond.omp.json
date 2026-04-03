@@ -142,12 +142,6 @@
           "style": "plain"
         },
         {
-          "template": "{{ if .Env.CONDA_DEFAULT_ENV }}\ue235  ({{ .Env.CONDA_DEFAULT_ENV }}){{ end }} ",
-          "foreground": "white",
-          "type": "text",
-          "style": "plain"
-        },
-        {
           "type": "kubectl",
           "style": "diamond",
           "leading_diamond": "<lightBlue>{ </>",
