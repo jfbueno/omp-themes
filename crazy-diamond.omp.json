@@ -43,6 +43,7 @@
         {
           "type": "git",
           "style": "diamond",
+          "trailing_diamond": "\ue0b0",
           "template": " {{ .UpstreamIcon }} {{ .HEAD }} ({{ printf \"%.7s\" .Commit.Sha}}){{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf51e {{ .StashCount }}{{ end }} ",
           "foreground": "black",
           "background": "yellow",
@@ -135,15 +136,15 @@
       "alignment": "left",
       "segments": [
         {
-          "template": "{{ if .Env.CONDA_DEFAULT_ENV }}\ue235  ({{ .Env.CONDA_DEFAULT_ENV }}){{ end }} ",
-          "foreground": "white",
+          "template": "<lightBlue>\u2570\u2500</> ",
+          "foreground": "lightBlue",
           "type": "text",
           "style": "plain"
         },
         {
           "type": "kubectl",
           "style": "diamond",
-          "leading_diamond": "<lightBlue>\u2570\u2500{ </>",
+          "leading_diamond": "<lightBlue>{ </>",
           "trailing_diamond": "<lightBlue> }</>",
           "foreground": "white",
           "background": "transparent",
